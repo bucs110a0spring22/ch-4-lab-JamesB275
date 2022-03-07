@@ -9,14 +9,34 @@ import math
 def drawSineCurve(turtle):
  for radian in range(-360,360):
     y = math.sin(math.radians(radian))
-    turtle.goto(radian,y)  
+    turtle.goto(radian,y)
+    turtle.down()
 #Part B
 def setupWindow(mywindow=None):
-  mywindow=turtle.setworldcoordinates(0,-1.5,360,1.5)
-def setupAxis(myturtle=None):
-   myturtle=turtle.setup(startx=0,starty=0)
+  mywindow=turtle.setworldcoordinates(-360,-1,360,1)
+def setupAxis(myturtle):
+  myturtle.goto(-360,0)
+  myturtle.goto(360,0)
+  myturtle.goto(0,0)
+  myturtle.goto(0,1)
+  myturtle.goto(0,-1)
+  myturtle.up()
   
+def drawCosineCurve(turtle):
+  turtle.down()
+  turtle.up()
+  for radian in range(-360,360):
+    y = math.cos(math.radians(radian))
+    turtle.goto(radian,y)
+    turtle.down()
 
+def drawTangentCurve(turtle):
+  turtle.down()
+  turtle.up()
+  for radian in range(-360,360):
+    y = math.tan(math.radians(radian))
+    turtle.goto(radian,y)
+    turtle.down()
 
 
 
@@ -35,7 +55,7 @@ def main():
     setupAxis(dart)
     dart.speed(0)
     drawSineCurve(dart)
-    #drawCosineCurve(dart)
-    #drawTangentCurve(dart)
+    drawCosineCurve(dart)
+    drawTangentCurve(dart)
     wn.exitonclick()
 main()
